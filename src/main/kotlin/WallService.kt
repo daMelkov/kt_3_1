@@ -3,7 +3,7 @@ object WallService {
     private var count = 0L
 
     fun add(post: Post): Post {
-        val item = post.copy(id = count++)
+        val item = post.copy(id = ++count)
 
         posts += item
         return posts.last()
