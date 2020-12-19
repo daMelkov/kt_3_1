@@ -1,5 +1,3 @@
-import sun.jvm.hotspot.oops.CellTypeState.value
-
 /**
  * Информация о лайках к записи
  */
