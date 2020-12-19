@@ -1,3 +1,6 @@
+/**
+ * Информация о способе размещения записи.
+ */
 class PostSource (
     val type: String = listOf("vk", "widget", "api", "rss", "sms").toString(),
     val platform: String? = listOf("android", "iphone", "wphone").toString(),
