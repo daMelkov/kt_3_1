@@ -17,7 +17,6 @@ class AudioAttachment : Attachment() {
 class DocAttachment : Attachment() {
     override val type: String = "Doc"
     val doc: Doc = Doc()
-
 }
 
 class VideoAttachment : Attachment() {
