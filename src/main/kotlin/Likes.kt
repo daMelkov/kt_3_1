@@ -1,0 +1,11 @@
+import sun.jvm.hotspot.oops.CellTypeState.value
+
+/**
+ * Информация о лайках к записи
+ */
+class Likes (
+    var count: Int = 0,
+    val userLikes: Boolean = false,
+    val canLike: Boolean = true,
+    val canPublish: Boolean = true
+)
