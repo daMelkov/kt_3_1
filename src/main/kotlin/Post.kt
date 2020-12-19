@@ -22,6 +22,7 @@ data class Post(
     val reposts: Int?,
     val views: Int?,
     val postType: String?,
+    val postSource: PostSource?,
     val signerId: Int?,
     val canPin: Boolean?,
     val canDelete: Boolean?,
