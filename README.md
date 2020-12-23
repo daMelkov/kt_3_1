@@ -1,9 +1,7 @@
 ### Задача №1 - PostNotFoundException
-Мы продолжаем развивать наш сервис с постами и решили внедрить в него возможность комментирования постов: createComment*.
+Мы продолжаем развивать наш сервис с постами и решили внедрить в него возможность комментирования постов: [createComment](https://vk.com/dev/wall.createComment).
 
-Примечание*: по традиции есть сохранённая версия
-
-В чём суть? Вы создаёте member function внутри WallService:
+В чём суть? Вы создаёте member function внутри `WallService`:
 ```kotlin
 class WallService {
 private var posts = emptyArray<Post>()
