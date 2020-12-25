@@ -4,7 +4,7 @@ import attachments.Attachment
  * Объект, описывающий комментарий к записи
  */
 class Comment (
-    val id: Int,
+    val id: Long,
     val fromId: Int,
     val date: Int,
     val text: String,

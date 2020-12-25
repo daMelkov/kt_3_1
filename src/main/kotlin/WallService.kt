@@ -3,7 +3,16 @@ object WallService {
     private var comments = emptyArray<Comment>()
 
     fun createComment(comment: Comment) {
-        TODO()
+        val id = comment.id;
+
+        for (post in posts) {
+            if(post.id == id) {
+                comments.plus(comment)
+                return
+            }
+        }
+
+        throw PostNotFoundException("Post non found: $id")
     }
 
 
@@ -26,3 +35,5 @@ object WallService {
         return false
     }
 }
+
+class PostNotFoundException(message: String) : Exception(message)
