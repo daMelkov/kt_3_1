@@ -1,7 +1,16 @@
+import attachments.Attachment
+
+/**
+ * Объект, описывающий комментарий к записи
+ */
 class Comment (
-    val count: Int? = 0,
-    val canPost: Boolean = true,
-    val groupsCanPost: Boolean = true,
-    val canClose: Boolean = true,
-    val canOpen: Boolean = true
+    val id: Int,
+    val fromId: Int,
+    val date: Int,
+    val text: String,
+    val donut: Donut?,
+    val replyToUser: Int?,
+    val replyToComment: Int?,
+    val attachments: Array<Attachment>?,
+    val parents_stack: Array<Comment>?
 )

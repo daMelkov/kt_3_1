@@ -1,9 +1,15 @@
 object WallService {
     private var posts = emptyArray<Post>()
-    private var count = 0L
+    private var comments = emptyArray<Comment>()
+
+    fun createComment(comment: Comment) {
+        TODO()
+    }
+
 
     fun add(post: Post): Post {
-        val item = post.copy(id = ++count)
+        val count = posts.size + 1L
+        val item = post.copy(id = count)
 
         posts += item
         return posts.last()
