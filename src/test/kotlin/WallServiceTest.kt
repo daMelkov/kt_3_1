@@ -5,6 +5,44 @@ import org.junit.Assert.*
 class WallServiceTest {
 
     @Test
+    fun createComment_post_found() {
+        val post = Post(
+            id = 0L,
+            ownerId = 50,
+            fromId = 50,
+            createdBy = 50,
+            date = 20201225,
+            text = "post text",
+            donut = Donut()
+        )
+
+        val id = WallService.add(post).id
+
+        val comment = Comment(
+            id = 0L,
+            postId = id,
+            fromId = 10,
+            text = "comment text",
+            date = 20201225
+        )
+
+        WallService.createComment(comment)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createComment_post_not_found() {
+        val comment = Comment(
+            id = 0L,
+            postId = 0,
+            fromId = 10,
+            text = "comment text",
+            date = 20201225
+        )
+
+        WallService.createComment(comment)
+    }
+
+    @Test
     fun add_post_id_more_then_0() {
         val post = Post(
             id = 0L,

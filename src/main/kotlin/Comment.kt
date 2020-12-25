@@ -3,14 +3,10 @@ import attachments.Attachment
 /**
  * Объект, описывающий комментарий к записи
  */
-class Comment (
+data class Comment (
     val id: Long,
-    val fromId: Int,
+    val postId: Long,
+    val fromId: Int?,
     val date: Int,
-    val text: String,
-    val donut: Donut?,
-    val replyToUser: Int?,
-    val replyToComment: Int?,
-    val attachments: Array<Attachment>?,
-    val parents_stack: Array<Comment>?
+    val text: String
 )

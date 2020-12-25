@@ -3,16 +3,16 @@ object WallService {
     private var comments = emptyArray<Comment>()
 
     fun createComment(comment: Comment) {
-        val id = comment.id;
+        val postId = comment.postId;
 
         for (post in posts) {
-            if(post.id == id) {
+            if(post.id == postId) {
                 comments.plus(comment)
                 return
             }
         }
 
-        throw PostNotFoundException("Post non found: $id")
+        throw PostNotFoundException("Post not found: $postId")
     }
 
 
