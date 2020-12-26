@@ -3,14 +3,7 @@ class Report (
     val commentId: Long,
     reasonId: Int = 1
 ) {
-    var reasonId = reasonId
-    set (value) {
-        if (value in 1..8) {
-            field = value
-        }
-
-        throw ReasonNonFoundException("Reason not correct")
-    }
+    var reasonId: Int = if (reasonId in 1..3) reasonId else throw ReasonNotFoundException("Reason not correct")
 }
 
-class ReasonNonFoundException(message: String) : Exception(message)
+class ReasonNotFoundException(message: String) : Exception(message)
