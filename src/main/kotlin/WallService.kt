@@ -1,28 +1,31 @@
 object WallService {
     private var posts = emptyArray<Post>()
-    private var comments = emptyArray<Comment>()
-    private var reports = emptyArray<Report>()
+    var comments = emptyArray<Comment>()
+    var reports = emptyArray<Report>()
 
-    fun createComment(comment: Comment) {
+    fun createComment(comment: Comment): Comment {
         val postId = comment.postId;
 
         for (post in posts) {
             if(post.id == postId) {
-                comments.plus(comment)
-                return
+                val commentId = (comments.size + 1).toLong()
+
+                comments += comment.copy(id = commentId)
+                return comments.last()
             }
         }
 
         throw PostNotFoundException("Post not found: $postId")
     }
 
-    fun report(comment: Comment, reason: Int) {
+    fun createReport(comment: Comment, reason: Int): Report {
         for (_comment in comments) {
             if (_comment.id == comment.id) {
-                val report = Report(comment.fromId, comment.id, reason)
-                reports.plus(report)
+                val reportId = (reports.size + 1).toLong()
+                val report = Report(reportId, comment.fromId, comment.id, reason)
 
-                return
+                reports += report
+                return reports.last()
             }
         }
 

@@ -1,4 +1,5 @@
 class Report (
+    val id: Long,
     val ownerId: Long,
     val commentId: Long,
     reasonId: Int = 1

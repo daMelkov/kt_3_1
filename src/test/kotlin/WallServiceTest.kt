@@ -5,6 +5,59 @@ import org.junit.Assert.*
 class WallServiceTest {
 
     @Test
+    fun createReport_comment_found() {
+        val post = Post(
+            id = 0L,
+            ownerId = 50,
+            fromId = 50,
+            createdBy = 50,
+            date = 20201225,
+            text = "post text",
+            donut = Donut()
+        )
+        val postId = WallService.add(post).id
+
+        val comment = Comment(
+            id = 0L,
+            postId = postId,
+            fromId = 10,
+            text = "comment text",
+            date = 20201225
+        )
+
+        val addedComment = WallService.createComment(comment)
+
+        val expected = addedComment.id
+        val actual = WallService.createReport(comment = addedComment, reason = 1).commentId
+
+        assertEquals("Ожидалось, что в рапорте о нарушении будет существующий комментарий", expected, actual)
+    }
+
+    @Test(expected = CommentNotFoundException::class)
+    fun createReport_comment_not_found() {
+        val post = Post(
+            id = 0L,
+            ownerId = 50,
+            fromId = 50,
+            createdBy = 50,
+            date = 20201225,
+            text = "post text",
+            donut = Donut()
+        )
+        val postId = WallService.add(post).id
+
+        val comment = Comment(
+            id = 0L,
+            postId = postId,
+            fromId = 10,
+            text = "comment text",
+            date = 20201225
+        )
+
+        WallService.createReport(comment = comment, reason = 1)
+    }
+
+    @Test
     fun createComment_post_found() {
         val post = Post(
             id = 0L,
